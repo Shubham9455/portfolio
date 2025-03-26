@@ -12,6 +12,10 @@ const links = [
     path: "/services",
   },
   {
+    name: 'work',
+    path: '/work'
+  },
+  {
     name: "resume",
     path: "/resume",
   },
@@ -19,6 +23,7 @@ const links = [
     name: "contact",
     path: "/contact",
   },
+  
 ];
 
 function Nav() {
