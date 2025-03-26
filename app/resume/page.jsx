@@ -8,8 +8,9 @@ import {
   FaNodeJs,
   FaMedal,
   FaUserGraduate,
+  FaFlask,
 } from "react-icons/fa";
-
+import Link from "next/link";
 import {
   SiTailwindcss,
   SiTypescript,
@@ -17,6 +18,9 @@ import {
   SiMongodb,
   SiPostgresql,
   SiCplusplus,
+  SiPython,
+  SiExpress,
+  SiDjango,
 } from "react-icons/si";
 
 const about = {
@@ -90,15 +94,69 @@ const skills = {
     { icon: <FaHtml5 />, name: "HTML5" },
     { icon: <FaCss3 />, name: "CSS3" },
     { icon: <FaJs />, name: "JavaScript" },
-    { icon: <SiTailwindcss />, name: "Tailwind CSS" },
     { icon: <SiTypescript />, name: "Typescript" },
-    { icon: <SiNextdotjs />, name: "Next.js" },
+
     { icon: <FaReact />, name: "React" },
+    { icon: <SiNextdotjs />, name: "Next.js" },
     { icon: <FaNodeJs />, name: "Node.js" },
+    {icon: <SiExpress />, name: "Express.js"},
+    {icon: <SiDjango />, name: "Django"},
+    {icon: <FaFlask />, name: "Flask"},
     { icon: <SiMongodb />, name: "MongoDB" },
     { icon: <SiPostgresql />, name: "PostgreSQL" },
-    // { icon: <FaSql />, name: "SQL" },
+    { icon: <SiTailwindcss />, name: "Tailwind CSS" },
     { icon: <SiCplusplus />, name: "C++" },
+    {icon: <SiPython />, name: "Python"},
+  ],
+};
+
+const cpAndDsa = {
+  title: "Competitive Programming & DSA",
+  desc: "I actively participate in competitive programming platforms and have achieved notable milestones.",
+  achievements: [
+    {
+      platform: "Codeforces",
+      achievement: "Expert with max rating 1641, solved 810 problems",
+      link: "https://codeforces.com/profile/__Shubham__Jaiswal__",
+    },
+    {
+      platform: "LeetCode",
+      achievement:
+        "Max rating 1816, solved 101 hard, 167 medium, and 40 easy problems",
+      link: "https://leetcode.com/u/__Shubham__Jaiswal__/",
+    },
+    {
+      platform: "Coding Ninjas",
+      achievement:
+        "Master with 557 problems solved, achieved monthly college topper badge twice",
+      link: "https://www.naukri.com/code360/profile/c7b5132d-9c1e-4031-a9d1-ea366198a0fb",
+    },
+  ],
+};
+
+const otherAchievements = {
+  title: "Other Achievements",
+  desc: "I have been involved in various activities and achieved notable recognition.",
+  achievements: [
+    {
+      activity: "Event Coordinator | Udyam’24",
+      description:
+        "Organized a web development and competitive programming event, conducted workshops, and organized a hackathon with 50+ teams.",
+    },
+    {
+      activity: "Tech Executive | Synergy Cell",
+      description:
+        "Developed and maintained SNTC's official website using Next.js and Tailwind CSS.",
+    },
+    {
+      activity: "Google Code Jam 2023",
+      description: "Secured rank 511 in Farewell Round A.",
+    },
+    {
+      activity: "Inter IIT Grad Capital High Prep PS Participant",
+      description:
+        "Contributed to developing a Flutter prototype for a startup idea showcased at Inter IIT Tech Meet 11.0.",
+    },
   ],
 };
 
@@ -143,6 +201,9 @@ const ResumePage = () => {
             <TabsTrigger value="experience">Experience</TabsTrigger>
             <TabsTrigger value="education">Education</TabsTrigger>
             <TabsTrigger value="skills">Skills</TabsTrigger>
+            <TabsTrigger value="cpdsa">CP & DSA</TabsTrigger>
+            <TabsTrigger value="other">Other Achievements</TabsTrigger>
+
             <TabsTrigger value="about">About me</TabsTrigger>
           </TabsList>
           <div className="min-h-[70vh] w-full">
@@ -210,24 +271,78 @@ const ResumePage = () => {
                     {skills.desc}
                   </p>
                 </div>
-                <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xl:gap-[30px]">
-                  {skills.skilllist.map((skill, index) => (
-                    <li key={index} className="">
-                      <TooltipProvider delayDuration={100}>
-                        <Tooltip>
-                          <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group">
-                            <div className="text-6xl group-hover:text-accent transition-all duration-300">
-                              {skill.icon}
-                            </div>
-                          </TooltipTrigger>
-                          <TooltipContent>
-                            <p className="capitalize">{skill.name}</p>
-                          </TooltipContent>
-                        </Tooltip>
-                      </TooltipProvider>
-                    </li>
-                  ))}
-                </ul>
+                <ScrollArea className="h-[460px] overflow-auto">
+                  <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xl:gap-[30px]">
+                    {skills.skilllist.map((skill, index) => (
+                      <li key={index} className="">
+                        <TooltipProvider delayDuration={100}>
+                          <Tooltip>
+                            <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group">
+                              <div className="text-6xl group-hover:text-accent transition-all duration-300">
+                                {skill.icon}
+                              </div>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p className="capitalize">{skill.name}</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </TooltipProvider>
+                      </li>
+                    ))}
+                  </ul>
+                </ScrollArea>
+              </div>
+            </TabsContent>
+            <TabsContent value="cpdsa" className={"w-full"}>
+              <div className="flex flex-col gap-[30px] text-center xl:text-left">
+                <h3 className="text-4xl font-bold">{cpAndDsa.title}</h3>
+                <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
+                  {cpAndDsa.desc}
+                </p>
+                <ScrollArea className="h-[460px] overflow-auto">
+                  <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px]">
+                    {cpAndDsa.achievements.map((item, index) => (
+                      <li
+                        key={index}
+                        className="bg-[#232329] h-[194px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
+                      >
+                        <span className="text-accent text-2xl">
+                          {item.platform}
+                        </span>
+                        <div className="flex items-center gap-3">
+                          <span className="w-[6px] h-[6px] rounded-full bg-accent"></span>
+                          <p className="text-white/60">{item.achievement}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </ScrollArea>
+              </div>
+            </TabsContent>
+            <TabsContent value="other" className={"w-full"}>
+              <div className="flex flex-col gap-[30px] text-center xl:text-left">
+                <h3 className="text-4xl font-bold">
+                  {otherAchievements.title}
+                </h3>
+                <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
+                  {otherAchievements.desc}
+                </p>
+                <ScrollArea className="h-[460px] overflow-auto">
+                  <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px]">
+                    {otherAchievements.achievements.map((item, index) => (
+                      <li
+                        key={index}
+                        className="bg-[#232329] h-[206px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
+                      >
+                        <span className="text-xl">{item.activity}</span>
+                        <div className="flex items-center gap-3">
+                          <span className="w-[6px] h-[6px] rounded-full bg-accent"></span>
+                          <p className="text-white/60">{item.description}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </ScrollArea>
               </div>
             </TabsContent>
             <TabsContent

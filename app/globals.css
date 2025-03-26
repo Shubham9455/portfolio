@@ -136,8 +136,45 @@
   -webkit-text-stroke: 1px #ffffff;
 }
 
-
 .text-outline-hover {
   -webkit-text-stroke: 1px #00ff99;
 }
 
+.silkscreen-regular {
+  font-family: "Silkscreen", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.silkscreen-bold {
+  font-family: "Silkscreen", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.tektur-regular {
+  font-family: "Tektur", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.titan-one-regular {
+  font-family: "Titan One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.libre-baskerville-bold {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+
+.roboto-slab-600 {
+  font-family: "Roboto Slab", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}

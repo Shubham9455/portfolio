@@ -21,7 +21,8 @@ const projects = [
     num: "01",
     category: "Frontend project",
     title: "Portfolio",
-    description: "Personal portfolio website made with React.js and Tailwind CSS. It uses Framer Motion for animations. It is fully responsive and has a dark mode.",
+    description:
+      "Personal portfolio website made with React.js and Tailwind CSS. It uses Framer Motion for animations. It is fully responsive and has a dark mode.",
     stack: [
       {
         name: "HTML5",
@@ -50,7 +51,8 @@ const projects = [
     num: "02",
     category: "Full stack project",
     title: "Crypto Trading App",
-    description: "A crypto trading app made with React.js and Tailwind CSS for frontend and Node.js and Express.js for backend. It uses CoinGecko API for fetching real-time data. It  handles basic buy and sell operations.",
+    description:
+      "A crypto trading app made with React.js and Tailwind CSS for frontend and Node.js and Express.js for backend. It uses CoinGecko API for fetching real-time data. It  handles basic buy and sell operations.",
     stack: [
       {
         name: "HTML5",
@@ -102,7 +104,7 @@ const WorkPage = () => {
     >
       <div className="container mx-auto">
         <div className="flex flex-col xl:flex-row xl:gap-[30px]">
-          <div className="w-full xl:w-[50%] xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none">
+          <div className="w-full xl:w-[50%] xl:h-[460px] flex flex-col xl:justify-between order-2  xl:order-none">
             <div className="flex flex-col gap-[30px] h-[50%]">
               <div className="text-8xl leading-none font-extrabold text-transparent text-outline">
                 {project.num}
@@ -111,11 +113,10 @@ const WorkPage = () => {
                 {project.category}
               </h2>
               <p className="text-white/60">{project.description}</p>
-              <ul className="flex gap-4">
+              <ul className="grid grid-cols-1 xl:grid-cols-3 gap-4">
                 {project.stack.map((stack, index) => (
                   <li key={index} className="text-xl text-accent">
                     {stack.name}
-                    {index !== project.stack.length - 1 && ","}
                   </li>
                 ))}
               </ul>
@@ -171,8 +172,12 @@ const WorkPage = () => {
                 </SwiperSlide>
               ))}
               <WorkSliderButtons
-                containerStyles={"flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 w-full justify-between xl:w-max xl:justify-none"}
-                btnStyles={"bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all"}
+                containerStyles={
+                  "flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 w-full justify-between xl:w-max xl:justify-none"
+                }
+                btnStyles={
+                  "bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all"
+                }
                 iconStyles={""}
               />
             </Swiper>
