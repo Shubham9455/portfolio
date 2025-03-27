@@ -2,10 +2,10 @@
 import CountUp from "react-countup"
 
 const stats = [
-  {
-    num: 1.5,
-    text: "Years of Experience in Freelance",
-  },
+  // {
+  //   num: 1.5,
+  //   text: "Years of Experience in Freelance",
+  // },
   {
     num: 2,
     text: "Months of Internship Experience",
