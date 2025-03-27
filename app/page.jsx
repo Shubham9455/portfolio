@@ -7,7 +7,6 @@ import Socials from "@/components/Social";
 import Stats from "@/components/Stats";
 import { Button } from "@/components/ui/button";
 import { FiDownload } from "react-icons/fi";
-
 const resume = "/assets/resume.pdf";
 
 const Home = () => {
@@ -20,32 +19,8 @@ const Home = () => {
     document.body.removeChild(link);
   };
 
-  const [mouseTrail, setMouseTrail] = useState([]);
-
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMouseTrail((prev) =>
-        [...prev, { id: Date.now(), x: e.clientX, y: e.clientY }].slice(-10)
-      ); // Keep only the last 10 dots
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
   return (
     <section className="h-full relative overflow-hidden">
-      {/* Cursor Animation */}
-      {mouseTrail.map(({ id, x, y }) => (
-        <motion.div
-          key={id}
-          className="absolute w-4 h-4 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-75"
-          style={{ top: y, left: x }}
-          animate={{ scale: [0.5, 1.2, 0.5], opacity: [1, 0.5, 0] }}
-          transition={{ duration: 0.5 }}
-        />
-      ))}
-
       <div className="container mx-auto h-full">
         <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-8 xl:pb-24">
           <div className="text-center xl:text-left order-2 xl:order-none">
@@ -80,7 +55,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className="order-1 xl:order-none mb-8 xl:mb-0">
+          <div className="order-1 xl:order-none mb-8 xl:mb-0 opacity-100 z-50">
             <Photo />
           </div>
         </div>

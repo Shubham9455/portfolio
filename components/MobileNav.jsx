@@ -33,8 +33,9 @@ const MobileNav = () => {
       <SheetContent className={"flex flex-col "}>
         <div className="mt-32 mb-40 text-center text-2xl">
           <Link href="/">
-            <h1 className="text-4xl font-semibold">
-              Shubham <span className="text-accent">_ Jaiswal</span>
+            <h1 className="text-4xl font-semibold silkscreen-bold">
+              <span className="text-accent ">&lt;</span>Shubham
+              <span className="text-accent">/&gt;</span>
             </h1>
           </Link>
         </div>
@@ -43,7 +44,9 @@ const MobileNav = () => {
             <Link
               key={index}
               href={link.path}
-              className={`${link.path === pathname && "text-accent border-b-2 border-accent"}
+              className={`${
+                link.path === pathname && "text-accent border-b-2 border-accent"
+              }
               text-xl capitalize hover:text-accent transition-all`}
             >
               {link.name}
