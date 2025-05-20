@@ -82,7 +82,7 @@ const education = {
       degree: "B.Tech in Electronics Engineering",
       institute: "Indian Institute of Technology (BHU) Varanasi",
       duration: "2021 - 2025",
-      grade: "CPI 8.95",
+      grade: "CGPA 8.97",
     },
   ],
 };
