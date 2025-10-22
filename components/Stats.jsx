@@ -1,43 +1,36 @@
-"use client"
-import CountUp from "react-countup"
+"use client";
+import CountUp from "react-countup";
 
 const stats = [
-  // {
-  //   num: 1.5,
-  //   text: "Years of Experience in Freelance",
-  // },
   {
     num: 2,
-    text: "Months of Internship Experience",
+    text: "Months Internship at Samsung Research Delhi (Summer 2024)",
+  },
+  {
+    num: 3,
+    text: "Months Full-time at Samsung Research Delhi (Since July 2025)",
   },
   {
     num: 1641,
-    text: "Codeforce Rating",
+    text: "CodeForces Expert, 800+ Problems Solved",
   },
   {
-    num: 810,
-    text: "Problems Solved on Codeforces",
-  },
-  {
-    num: 353,
-    text: "Hours worked on Upwork",
+    num: 1.5,
+    text: "Years of Experience through Internships, Full-time, and Freelancing",
   },
 ];
-
-
-
-
 
 const Stats = () => {
   return (
     <section className="pt-4 pb-12 xl:pt-0 xl:pb-0">
       <div className="container mx-auto">
-        <div className="flex flex-wrap gap-6 max-w-[80vw] mx-auto xl-max-w-none">
+        <div className="flex flex-wrap gap-6 max-w-[90vw] mx-auto xl-max-w-none">
           {stats.map((item, index) => {
             return (
-              <div 
-              className="flex-1 flex gap-4 items-center justify-center xl:justify-start"
-              key={index}>
+              <div
+                className="flex-1 flex gap-4 items-center justify-center"
+                key={index}
+              >
                 <CountUp
                   end={item.num}
                   duration={3}
@@ -46,7 +39,11 @@ const Stats = () => {
                   decimals={item.num % 1 === 0 ? 0 : 1}
                   className="text-4xl xl:text-6xl font-extrabold"
                 />
-                <p className={`${item.text.length < 15 ? "max-w-[100px]": "max-w-[150px]" } leading-snug text-white/80`}>{item.text}</p>
+                <p
+                  className={`leading-snug text-white/80 text-sm max-w-[180px]`}
+                >
+                  {item.text}
+                </p>
               </div>
             );
           })}
@@ -54,6 +51,6 @@ const Stats = () => {
       </div>
     </section>
   );
-}
+};
 
-export default Stats
+export default Stats;

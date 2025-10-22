@@ -9,6 +9,7 @@ import {
   FaMedal,
   FaUserGraduate,
   FaFlask,
+  FaAngular,
 } from "react-icons/fa";
 import Link from "next/link";
 import {
@@ -21,6 +22,7 @@ import {
   SiPython,
   SiExpress,
   SiDjango,
+  SiRedis,
 } from "react-icons/si";
 
 const about = {
@@ -45,10 +47,6 @@ const about = {
       fieldValue: "Indian",
     },
     {
-      fieldName: "Freelance",
-      fieldValue: "Available",
-    },
-    {
       fieldName: "Languages",
       fieldValue: "English, Hindi",
     },
@@ -61,31 +59,42 @@ const experience = {
   desc: "I have worked with various companies and startups to build web applications. I have experience in building full stack applications using modern technologies.",
   items: [
     {
-      company: "Samsung Delhi",
+      company: "Samsung Research & Development Institute, Delhi",
+      position: "Software Engineer",
+      duration: "July 2025 - Present",
+      company_link: "https://research.samsung.com/sri-d",
+    },
+    {
+      company: "Samsung Research & Development Institute, Delhi",
       position: "Software Engineering Intern",
-      duration: "Summer 2025",
+      duration: "Summer 2024",
+      company_link: "https://research.samsung.com/sri-d",
     },
     {
       company: "Trio Global Inc.",
       position: "Freelance Software Developer",
       duration: "August 2023 - April 2024",
+      company_link: "https://www.linkedin.com/company/triodev/",
     },
   ],
 };
 
+
 const education = {
   icon: "",
   title: "My Education",
-  desc: "I'm currently pursuing my B.Tech in Electronics Engineering from Indian Institute of Technology (BHU) Varanasi. I have a strong foundation in computer science and mathematics.",
+  desc: "I hold a B.Tech degree in Electronics Engineering from the Indian Institute of Technology (BHU) Varanasi. My coursework provided a strong foundation in computer science and mathematics.",
   items: [
     {
       degree: "B.Tech in Electronics Engineering",
       institute: "Indian Institute of Technology (BHU) Varanasi",
       duration: "2021 - 2025",
-      grade: "CGPA 8.97",
+      grade: "CPI 8.97",
+      status: "Completed",
     },
   ],
 };
+
 
 const skills = {
   title: "My Skills",
@@ -97,12 +106,14 @@ const skills = {
     { icon: <SiTypescript />, name: "Typescript" },
 
     { icon: <FaReact />, name: "React" },
+    {icon: <FaAngular />, name: "Angular"},
     { icon: <SiNextdotjs />, name: "Next.js" },
     { icon: <FaNodeJs />, name: "Node.js" },
     {icon: <SiExpress />, name: "Express.js"},
     {icon: <SiDjango />, name: "Django"},
     {icon: <FaFlask />, name: "Flask"},
     { icon: <SiMongodb />, name: "MongoDB" },
+    {icon: <SiRedis />, name: "Redis"},
     { icon: <SiPostgresql />, name: "PostgreSQL" },
     { icon: <SiTailwindcss />, name: "Tailwind CSS" },
     { icon: <SiCplusplus />, name: "C++" },
@@ -116,13 +127,13 @@ const cpAndDsa = {
   achievements: [
     {
       platform: "Codeforces",
-      achievement: "Expert with max rating 1641, solved 810 problems",
+      achievement: "Expert with max rating 1641, solved 800+ problems",
       link: "https://codeforces.com/profile/__Shubham__Jaiswal__",
     },
     {
       platform: "LeetCode",
       achievement:
-        "Max rating 1816, solved 101 hard, 167 medium, and 40 easy problems",
+        "Max rating 1816, solved 100+ hard, 150+ medium, 50+ easy problems",
       link: "https://leetcode.com/u/__Shubham__Jaiswal__/",
     },
     {
@@ -228,6 +239,16 @@ const ResumePage = () => {
                           <span className="w-[6px] h-[6px] rounded-full bg-accent"></span>
                           <p className="text-white/60">{item.company}</p>
                         </div>
+                        {item.company_link && (
+                          <Link
+                            href={item.company_link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-sm text-accent hover:underline"
+                          >
+                            Visit ↗
+                          </Link>
+                        )}
                       </li>
                     ))}
                   </ul>
@@ -245,10 +266,17 @@ const ResumePage = () => {
                     {education.items.map((item, index) => (
                       <li
                         key={index}
-                        className="bg-[#232329] h-[194px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
+                        className="bg-[#232329] h-[208px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
                       >
+                        <div className="mt-[8px]">
+                          {item.status === "Completed" ? (
+                            <FaUserGraduate className="text-3xl text-accent mb-2" />
+                          ) : (
+                            <FaMedal className="text-3xl text-accent mb-2" />
+                          )}
+                        </div>
                         <span className="text-accent">{item.duration}</span>
-                        <h3 className="text-xl max-w-[260px] min-h-[60px] text-center lg:text-left">
+                        <h3 className="text-xl text-center lg:text-left">
                           {item.degree}
                         </h3>
 
@@ -361,7 +389,7 @@ const ResumePage = () => {
                       className="flex items-center justify-center xl:justify-start gap-4"
                     >
                       <span className="text-white/60">{item.fieldName}</span>
-                      <spam className="text-xl">{item.fieldValue}</spam>
+                      <span className="text-xl">{item.fieldValue}</span>
                     </li>
                   ))}
                 </ul>
