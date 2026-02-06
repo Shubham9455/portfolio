@@ -7,13 +7,15 @@ import Socials from "@/components/Social";
 import Stats from "@/components/Stats";
 import { Button } from "@/components/ui/button";
 import { FiDownload } from "react-icons/fi";
-const resume = "/assets/resume.pdf";
+const resumeFolder =
+  "https://drive.google.com/drive/folders/1vF1FEP7ilRFAIaJFvZxohnyMBSrqm_h5?usp=drive_link";
 
 const Home = () => {
-  const handleResumeDownload = () => {
+  const handleResumeView = () => {
     const link = document.createElement("a");
-    link.href = resume;
-    link.download = "Shubham_Jaiswal_Resume.pdf";
+    link.href = resumeFolder;
+    link.target = "_blank";
+    link.rel = "noreferrer";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -40,9 +42,9 @@ const Home = () => {
                 variant={"outline"}
                 size={"lg"}
                 className={"uppercase flex items-center gap-2"}
-                onClick={handleResumeDownload}
+                onClick={handleResumeView}
               >
-                <span className="libre-baskerville-bold">Download CV</span>
+                <span className="libre-baskerville-bold">View Resume</span>
                 <FiDownload className="text-xl" />
               </Button>
               <div className="mb-8 xl:mb-0">

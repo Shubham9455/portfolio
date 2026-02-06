@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useState } from "react";
 import CountUp from "react-countup";
 
 const monthsSince = (startDate) => {
@@ -15,26 +16,78 @@ const monthsSince = (startDate) => {
   return Number(Math.max(0, months).toFixed(0));
 };
 
-const stats = [
-  {
-    num: 2,
-    text: "Months Internship at Samsung Research Delhi (Summer 2024)",
-  },
-  {
-    num: monthsSince(new Date(2025, 6, 1)),
-    text: "Months Full-time at Samsung Research Delhi (Since July 2025)",
-  },
-  {
-    num: 1641,
-    text: "CodeForces Expert, 800+ Problems Solved",
-  },
-  {
-    num: 1.5,
-    text: "Years of Experience through Internships, Full-time, and Freelancing",
-  },
-];
-
 const Stats = () => {
+  const [cfRating, setCfRating] = useState(1641);
+  const [cfMaxRating, setCfMaxRating] = useState(1641);
+  const [cfSolved, setCfSolved] = useState(800);
+
+  useEffect(() => {
+    const fetchRating = async () => {
+      try {
+        const [infoResponse, statusResponse] = await Promise.all([
+          fetch(
+            "https://codeforces.com/api/user.info?handles=__Shubham__Jaiswal__",
+          ),
+          fetch(
+            "https://codeforces.com/api/user.status?handle=__Shubham__Jaiswal__",
+          ),
+        ]);
+
+        const infoData = await infoResponse.json();
+        const statusData = await statusResponse.json();
+
+        const user = infoData?.result?.[0];
+        if (infoData?.status === "OK" && user?.rating) {
+          setCfRating(user.rating);
+          setCfMaxRating(user.maxRating ?? user.rating);
+        }
+
+        if (statusData?.status === "OK" && Array.isArray(statusData.result)) {
+          const solved = new Set();
+          statusData.result.forEach((submission) => {
+            if (submission?.verdict === "OK" && submission?.problem) {
+              const key = `${submission.problem.contestId}-${submission.problem.index}`;
+              solved.add(key);
+            }
+          });
+          setCfSolved(solved.size);
+        }
+      } catch (error) {
+        console.error("Failed to fetch Codeforces rating", error);
+      }
+    };
+
+    fetchRating();
+  }, []);
+
+  const stats = [
+    {
+      num: 2,
+      text: "Months Internship at Samsung Research Delhi (Summer 2024)",
+    },
+    {
+      num: monthsSince(new Date(2025, 6, 1)),
+      text: "Months Full-time at Samsung Research Delhi (Since July 2025)",
+    },
+    {
+      num: cfMaxRating,
+      text: (
+        <>
+          CodeForces Max Rating
+          <span className="block text-md text-white/60">
+            Current Rating {cfRating}
+            <br />
+            Solved {cfSolved} Problems
+          </span>
+        </>
+      ),
+    },
+    {
+      num: 1.5,
+      text: "Years of Experience through Internships, Full-time, and Freelancing",
+    },
+  ];
+
   return (
     <section className="pt-4 pb-12 xl:pt-0 xl:pb-0">
       <div className="container mx-auto">
