@@ -1,13 +1,27 @@
 "use client";
 import CountUp from "react-countup";
 
+const monthsSince = (startDate) => {
+  const now = new Date();
+  let months =
+    (now.getFullYear() - startDate.getFullYear()) * 12 +
+    (now.getMonth() - startDate.getMonth());
+  const daysInMonth = new Date(
+    now.getFullYear(),
+    now.getMonth() + 1,
+    0,
+  ).getDate();
+  months += (now.getDate() - 1) / daysInMonth;
+  return Number(Math.max(0, months).toFixed(0));
+};
+
 const stats = [
   {
     num: 2,
     text: "Months Internship at Samsung Research Delhi (Summer 2024)",
   },
   {
-    num: 3,
+    num: monthsSince(new Date(2025, 6, 1)),
     text: "Months Full-time at Samsung Research Delhi (Since July 2025)",
   },
   {
