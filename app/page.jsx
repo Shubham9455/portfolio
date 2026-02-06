@@ -34,8 +34,8 @@ const Home = () => {
               <span className="text-accent">Shubham Jaiswal</span>
             </h1>
             <p className="max-w-[500px] mb-9 text-white/80 libre-baskerville-bold">
-              I am a software engineer who loves to build amazing web
-              applications.
+              I enjoy building web applications, taking ownership of what I work
+              on, and continuously learning new technologies.
             </p>
             <div className="flex flex-col xl:flex-row items-center gap-8">
               <Button
